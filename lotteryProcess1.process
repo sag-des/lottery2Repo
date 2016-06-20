@@ -12,6 +12,8 @@
     <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
     <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
   </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
   <timeout calendarAlias="" calendarTime="0:0:0"
     dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
     dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
@@ -30,7 +32,92 @@
     uid="P2" useCorrelation="false">
     <documentation/>
     <businessKPIs/>
-    <fontData boldFont="false" italicFont="false"/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <noneEventStep Id="a68badc3-05ad-4fc7-8eff-89325418b815"
+      eventType="START" height="28"
+      jmsAliasConnection="PE_NONTRANSACTIONAL_ALIAS" jmsDestination=""
+      jmsDestinationType="" label="Start Event1" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" receiveProtocol="JMS"
+      stepLock="false" uid="S3" useCorrelation="false" width="28"
+      x="412" y="160">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <invokeStep Id="c050615f-8ae3-41b6-9ed2-9a810b9f5aed"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="EMPTY" isCompensating="false"
+      isTestAfter="false" label="Task1" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S5" useCorrelation="false" width="93"
+      x="680" y="263">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <noneEventStep Id="eefe02bc-8b90-42d7-9f57-3d8d3f1ee3ae"
+      eventType="INTERMEDIATE_THROW" height="28" jmsAliasConnection=""
+      jmsDestination="" jmsDestinationType=""
+      label="Intermediate Event1" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" receiveProtocol="JMS" stepLock="false"
+      uid="S7" useCorrelation="false" width="28" x="576" y="480">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <transition Id="add62a05-02d7-4769-a4ba-19ac9302e9b4" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S3"
+      sourceLocation="440,174" sourceTerminal="RIGHT" target="S5"
+      targetLocation="680,293" targetTerminal="LEFT" uid="T6">
+      <bendpoint index="0" location="560,174" weight="0.5"/>
+      <bendpoint index="1" location="560,293" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="53eac2ce-50c0-4cb4-8fdc-4885ce551190" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S5"
+      sourceLocation="680,293" sourceTerminal="LEFT" target="S7"
+      targetLocation="590,480" targetTerminal="TOP" uid="T8">
+      <bendpoint index="0" location="590,293" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
     <timeout calendarAlias="" calendarTime="0:0:0"
       dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
       dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
